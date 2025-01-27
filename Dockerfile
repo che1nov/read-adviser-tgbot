@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine
+FROM golang:1.23-alpine
 
 # Установка необходимых зависимостей для CGO
 RUN apk add --no-cache gcc musl-dev
