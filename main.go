@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"flag"
 	tgClient "github.com/che1nov/read-adviser-tgbot/clients/telegram"
 	event_consumer "github.com/che1nov/read-adviser-tgbot/consumer/event-consumer"
 	"github.com/che1nov/read-adviser-tgbot/events/telegram"
@@ -15,19 +14,19 @@ const (
 	tgBotHost         = "api.telegram.org"
 	sqliteStoragePath = "data/sqlite/storage.db"
 	batchSize         = 100
+	tgBotToken        = "7752693039:AAGEMKLZYj7mm-z8TcFJ7rOhC0AIfhdsU6s" // Жестко закодированный токен
 )
 
-// 7752693039:AAGEMKLZYj7mm-z8TcFJ7rOhC0AIfhdsU6s
 func main() {
 	s, err := sqlite.New(sqliteStoragePath)
 	if err != nil {
-		log.Fatalf("can't %v connect to storage", err)
+		log.Fatalf("can't connect to storage: %v", err)
 	}
 
 	s.Init(context.TODO())
 
 	eventsProcessor := telegram.New(
-		tgClient.New(tgBotHost, mustToken()),
+		tgClient.New(tgBotHost, tgBotToken),
 		s,
 	)
 
@@ -38,20 +37,4 @@ func main() {
 	if err := consumer.Start(); err != nil {
 		log.Fatal("service is stopped", err)
 	}
-}
-
-func mustToken() string {
-	token := flag.String(
-		"tg-bot-token",
-		"",
-		"token for access to telegram bot",
-	)
-
-	flag.Parse()
-
-	if *token == "" {
-		log.Fatal("token is not specified")
-	}
-
-	return *token
 }
