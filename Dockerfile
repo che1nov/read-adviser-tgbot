@@ -1,5 +1,9 @@
 FROM golang:1.23-alpine
 
+# Установка необходимых зависимостей для CGO
+RUN apk add --no-cache gcc musl-dev
+
+
 WORKDIR /app
 
 # Копируем файлы go.mod и go.sum и загружаем зависимости
