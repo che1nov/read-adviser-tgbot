@@ -1,0 +1,1 @@
+web: ./read-adviser-tgbot -tg-bot-token=$TELEGRAM_API_TOKEN
