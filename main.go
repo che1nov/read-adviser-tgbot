@@ -17,11 +17,11 @@ const (
 	batchSize         = 100
 )
 
-// 7478806356:AAHocGugABm4psU77XFOmlrca9xcPNk7fy8
+// 7752693039:AAGEMKLZYj7mm-z8TcFJ7rOhC0AIfhdsU6s
 func main() {
 	s, err := sqlite.New(sqliteStoragePath)
 	if err != nil {
-		log.Fatalf("can't connect to storage", err)
+		log.Fatalf("can't %v connect to storage", err)
 	}
 
 	s.Init(context.TODO())
