@@ -16,12 +16,9 @@ RUN go mod download
 # Копируем остальные файлы проекта
 COPY . .
 
-# Установка токена в переменной окружения
-ENV TELEGRAM_API_TOKEN=7752693039:AAGEMKLZYj7mm-z8TcFJ7rOhC0AIfhdsU6s
-
 # Сборка проекта
 RUN go build -o /read-adviser-tgbot
 
 EXPOSE 8080
 
-CMD ["/read-adviser-tgbot", "-tg-bot-token=${TELEGRAM_API_TOKEN}"]
+CMD ["/read-adviser-tgbot"]

@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
+	"log"
+
 	tgClient "github.com/che1nov/read-adviser-tgbot/clients/telegram"
 	event_consumer "github.com/che1nov/read-adviser-tgbot/consumer/event-consumer"
 	"github.com/che1nov/read-adviser-tgbot/events/telegram"
 	"github.com/che1nov/read-adviser-tgbot/storage/sqlite"
 	_ "github.com/mattn/go-sqlite3"
-	"log"
 )
 
 const (
